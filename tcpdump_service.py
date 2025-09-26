@@ -59,6 +59,7 @@ def start_all():
         cmd = build_cmd(iface, OUTPUT_DIR)
         stderr_path = OUTPUT_DIR / f"{iface}.stderr.log"
         f_err = open(stderr_path, "ab")
+        print(f"Command for TCPDump: {cmd}")
         p = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=f_err)
         processes[iface] = (p, f_err)
         print(f"Started tcpdump for {iface} (pid {p.pid}), writing to {OUTPUT_DIR}/{iface}.pcap*")

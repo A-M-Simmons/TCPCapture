@@ -69,7 +69,7 @@ install_if_changed "$SRC_DIR/tcpdump_service.py" "$PY_SCRIPT" 755
 PY_UPDATED=$?
 
 echo "[*] Installing systemd unit..."
-install_if_changed "$SRC_DIR/tcpdump-capture.service" "$UNIT_FILE" 644
+install_if_changed "$SRC_DIR/tcpdump_capture.service" "$UNIT_FILE" 644
 UNIT_UPDATED=$?
 
 # ---------- Systemd Setup ----------
