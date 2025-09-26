@@ -28,7 +28,7 @@ settings = config["settings"]
 
 INTERFACES = [i.strip() for i in settings.get("interfaces", "").split(",") if i.strip()]
 OUTPUT_DIR = Path(settings.get("output_dir", "/var/log/tcpdump"))
-TCPDUMP_BIN = settings.get("tcpdump_bin", "/usr/sbin/tcpdump")
+TCPDUMP_BIN = settings.get("tcpdump_bin", "/usr/bin/tcpdump")
 ROTATE_SIZE_MB = settings.getint("rotate_size_mb", 100)
 MAX_ROTATED_FILES = settings.getint("max_rotated_files", 20)
 EXTRA_ARGS = [arg.strip() for arg in settings.get("extra_args", "").split(",") if arg.strip()]

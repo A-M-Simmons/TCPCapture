@@ -27,19 +27,6 @@ if ! command -v python3 >/dev/null 2>&1; then
 fi
 python3 -V
 
-# Python package requirements
-PYTHON_PACKAGES=(configparser)
-
-echo "[*] Ensuring required Python packages are installed..."
-for pkg in "${PYTHON_PACKAGES[@]}"; do
-    if ! python3 -c "import $pkg" 2>/dev/null; then
-        echo "  -> Installing Python package: $pkg"
-        pip3 install --break-system-packages "$pkg"
-    else
-        echo "  -> Python package already available: $pkg"
-    fi
-done
-
 # ---------- Directory Setup ----------
 echo "[*] Ensuring log directory at $LOG_DIR..."
 if [ ! -d "$LOG_DIR" ]; then
@@ -68,7 +55,7 @@ install_if_changed() {
         return 0
     else
         echo "  -> No change to $dest"
-        return 1
+        return 0
     fi
 }
 
