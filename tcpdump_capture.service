@@ -1,0 +1,19 @@
+[Unit]
+Description=TCPDump capture service for two interfaces
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env python3 /usr/local/bin/tcpdump_service.py
+Restart=on-failure
+RestartSec=5
+User=root
+Group=root
+PrivateTmp=true
+NoNewPrivileges=true
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target
